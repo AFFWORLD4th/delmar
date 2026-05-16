@@ -9,8 +9,13 @@ export default function Contact() {
   return (
     <div className="flex flex-col w-full">
       {/* Header */}
-      <section className="bg-primary text-primary-foreground py-20 lg:py-32">
-        <div className="container mx-auto px-6 lg:px-12 text-center max-w-3xl">
+      <section className="relative py-20 lg:py-32 flex items-center justify-center text-primary-foreground">
+        <div className="absolute inset-0 bg-black/60 z-10" />
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/contact_hero.png')" }} 
+        />
+        <div className="container mx-auto px-6 lg:px-12 relative z-20 text-center max-w-3xl">
           <h1 className="text-4xl md:text-6xl font-bold font-heading mb-6">Contact Us</h1>
           <p className="text-lg md:text-xl text-primary-foreground/80">
             Reach out to our team of experts to discuss how we can support your global operations.

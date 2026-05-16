@@ -23,7 +23,7 @@ export default function About() {
         <div className="absolute inset-0 bg-black/50 z-10" />
         <div 
           className="absolute inset-0 z-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')" }} 
+          style={{ backgroundImage: "url('/images/about_hero.png')" }} 
         />
         <div className="container mx-auto px-6 lg:px-12 relative z-20">
           <h1 className="text-4xl md:text-6xl font-bold font-heading mb-4">About Us</h1>
@@ -57,7 +57,7 @@ export default function About() {
             <div className="relative h-[600px] rounded-sm overflow-hidden shadow-2xl">
               <div 
                 className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop')" }} 
+                style={{ backgroundImage: "url('/images/about_story.png')" }} 
               />
             </div>
           </div>

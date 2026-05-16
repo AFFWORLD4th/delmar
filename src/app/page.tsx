@@ -18,7 +18,7 @@ export default function Home() {
         {/* We can use a generic modern background here if we had an image, for now a clean gradient/pattern or just solid dark */}
         <div 
           className="absolute inset-0 z-0 opacity-50 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?q=80&w=2073&auto=format&fit=crop')" }} 
+          style={{ backgroundImage: "url('/images/home_hero.png')" }} 
         />
         
         <div className="container mx-auto px-6 lg:px-12 relative z-20">
@@ -71,7 +71,7 @@ export default function Home() {
             <div className="relative h-[500px] rounded-sm overflow-hidden shadow-2xl">
               <div 
                 className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop')" }} 
+                style={{ backgroundImage: "url('/images/home_about.png')" }} 
               />
             </div>
           </div>
