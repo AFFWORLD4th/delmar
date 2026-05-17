@@ -33,7 +33,7 @@ export default function RootLayout({
         className={`${poppins.variable} ${montserrat.variable} font-sans antialiased bg-background text-foreground min-h-screen flex flex-col`}
       >
         <SiteHeader />
-        <main className="flex-1 w-full pt-20">
+        <main className="flex-1 w-full">
           {children}
         </main>
         <WhatsAppButton />

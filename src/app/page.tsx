@@ -3,11 +3,36 @@ import { ArrowRight, Anchor, Package, Truck, Briefcase, Settings } from "lucide-
 
 export default function Home() {
   const services = [
-    { title: "Maritime Support", icon: Anchor, desc: "Comprehensive support for global maritime operations." },
-    { title: "Supply & Coordination", icon: Package, desc: "Efficient sourcing and seamless coordination." },
-    { title: "Logistics Solutions", icon: Truck, desc: "End-to-end logistics tailored to your needs." },
-    { title: "Business Support Services", icon: Briefcase, desc: "Administrative and operational backbone." },
-    { title: "Operational Assistance", icon: Settings, desc: "Ensuring smooth daily operations worldwide." },
+    { 
+      title: "Maritime Support", 
+      icon: Anchor, 
+      image: "/images/service_maritime.png",
+      desc: "Comprehensive support for global maritime operations, ensuring safety, compliance, and unmatched efficiency across all vessel types and international routes." 
+    },
+    { 
+      title: "Supply & Coordination", 
+      icon: Package, 
+      image: "/images/service_supply.png",
+      desc: "Efficient sourcing and seamless coordination of provisions and spare parts, designed to keep your operations running without interruption." 
+    },
+    { 
+      title: "Logistics Solutions", 
+      icon: Truck, 
+      image: "/images/service_logistics.png",
+      desc: "End-to-end logistics tailored to your needs. We manage complex supply chains to ensure your assets reach their destination safely." 
+    },
+    { 
+      title: "Business Support Services", 
+      icon: Briefcase, 
+      image: "/images/service_business.png",
+      desc: "The administrative and operational backbone for your international ventures, providing the infrastructure you need to succeed globally." 
+    },
+    { 
+      title: "Operational Assistance", 
+      icon: Settings, 
+      image: "/images/service_ops.png",
+      desc: "24/7 global operations command center dedicated to resolving issues, optimizing daily performance, and providing continuous on-site support." 
+    },
   ];
 
   return (
@@ -99,16 +124,33 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, idx) => (
-              <div 
+              <Link
+                href={`/services`}
                 key={idx} 
-                className="group bg-primary p-10 rounded-sm border border-primary-foreground/5 hover:border-primary-foreground/20 transition-all duration-300"
+                className="group relative h-[420px] rounded-sm overflow-hidden bg-primary block"
               >
-                <service.icon className="text-background mb-6" size={40} strokeWidth={1.5} />
-                <h4 className="text-xl font-bold font-heading mb-4 text-primary-foreground">{service.title}</h4>
-                <p className="text-primary-foreground/60 font-light leading-relaxed">
-                  {service.desc}
-                </p>
-              </div>
+                {/* Background Image */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"
+                  style={{ backgroundImage: `url('${service.image}')` }}
+                />
+                {/* Overlay Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/90 to-primary/20 opacity-90 transition-opacity duration-500 group-hover:opacity-80" />
+                
+                {/* Content */}
+                <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
+                  <div className="transform transition-transform duration-500 group-hover:-translate-y-2">
+                    <service.icon size={36} strokeWidth={1.5} className="text-primary-foreground/60 mb-6 group-hover:text-primary-foreground transition-colors duration-300" />
+                    <h4 className="text-2xl font-bold font-heading mb-3 text-primary-foreground">{service.title}</h4>
+                    <p className="text-primary-foreground/70 font-light leading-relaxed mb-6">
+                      {service.desc}
+                    </p>
+                    <div className="flex items-center text-xs font-bold uppercase tracking-widest text-primary-foreground/0 group-hover:text-primary-foreground transition-colors duration-300">
+                      Explore Service <ArrowRight size={16} className="ml-2 -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
