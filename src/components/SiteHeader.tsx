@@ -3,13 +3,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { serviceCatalog } from "@/lib/services";
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isServicesHovered, setIsServicesHovered] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -24,6 +27,7 @@ export function SiteHeader() {
     { href: "/", label: "Home" },
     { href: "/about", label: "About Us" },
     { href: "/services", label: "Services" },
+    { href: "/blog", label: "Insights" },
     { href: "/contact", label: "Contact Us" },
   ];
 
@@ -59,7 +63,86 @@ export function SiteHeader() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-10">
           {links.map((link) => {
-            const isActive = pathname === link.href;
+            const isServices = link.href === "/services";
+            const isServicesActive = pathname.startsWith("/services");
+            const isActive = isServices ? isServicesActive : pathname === link.href;
+
+            if (isServices) {
+              return (
+                <div
+                  key={link.href}
+                  className="relative py-2"
+                  onMouseEnter={() => setIsServicesHovered(true)}
+                  onMouseLeave={() => setIsServicesHovered(false)}
+                >
+                  <Link
+                    href={link.href}
+                    className={`flex items-center gap-1 text-[0.68rem] font-bold uppercase tracking-[0.18em] py-1 transition-colors duration-300 group ${
+                      scrolled
+                        ? isActive
+                          ? "text-primary"
+                          : "text-secondary/70 hover:text-primary"
+                        : isActive
+                        ? "text-primary-foreground"
+                        : "text-primary-foreground/70 hover:text-primary-foreground"
+                    }`}
+                  >
+                    {link.label}
+                    <ChevronDown
+                      size={11}
+                      className={`transition-transform duration-300 mt-[-1px] ${
+                        isServicesHovered ? "rotate-180" : ""
+                      }`}
+                    />
+                    {/* Gold active indicator */}
+                    <span
+                      className={`absolute left-0 bottom-0 h-[1.5px] transition-all duration-400 origin-left ${
+                        isActive ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                      style={{ background: "var(--gold)" }}
+                    />
+                  </Link>
+
+                  {/* Dropdown Menu */}
+                  <AnimatePresence>
+                    {isServicesHovered && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-primary border border-secondary/15 py-4 shadow-2xl z-50 text-left font-sans"
+                      >
+                        <div className="flex flex-col gap-1">
+                          <Link
+                            href="/services"
+                            onClick={() => setIsServicesHovered(false)}
+                            className="px-5 py-2 text-[0.65rem] font-bold uppercase tracking-[0.15em] text-gold hover:bg-secondary/25 transition-colors border-b border-secondary/10 pb-2 mb-1 block"
+                          >
+                            All Services Overview
+                          </Link>
+                          {serviceCatalog.map((service) => (
+                            <Link
+                              key={service.slug}
+                              href={`/services/${service.slug}`}
+                              onClick={() => setIsServicesHovered(false)}
+                              className="px-5 py-2.5 text-xs text-primary-foreground/75 hover:text-gold hover:bg-secondary/25 transition-colors font-medium flex items-center justify-between group/item"
+                            >
+                              <span>{service.shortTitle}</span>
+                              <ChevronRight
+                                size={12}
+                                className="opacity-0 group-hover/item:opacity-100 transition-opacity translate-x-[-4px] group-hover/item:translate-x-0 text-gold"
+                              />
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            }
+
             return (
               <Link
                 key={link.href}
@@ -126,7 +209,78 @@ export function SiteHeader() {
             {/* Gold top line on mobile menu */}
             <div className="h-[2px] w-full" style={{ background: "var(--gold)" }} />
             <div className="flex flex-col p-6 gap-1">
-              {links.map((link, i) => {
+              {links.map((link) => {
+                const isServices = link.href === "/services";
+                const isServicesActive = pathname.startsWith("/services");
+
+                if (isServices) {
+                  return (
+                    <div key={link.href} className="flex flex-col">
+                      <button
+                        onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                        className={`flex items-center justify-between px-4 py-4 text-[0.72rem] font-bold uppercase tracking-[0.18em] transition-all duration-300 text-left border-l-2 ${
+                          isServicesActive
+                            ? "text-primary"
+                            : "text-secondary/70 hover:text-primary border-transparent hover:border-secondary/20"
+                        }`}
+                        style={isServicesActive ? { borderLeftColor: "var(--gold)" } : {}}
+                      >
+                        <span>{link.label}</span>
+                        <ChevronDown
+                          size={16}
+                          className={`transition-transform duration-300 ${
+                            isMobileServicesOpen ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+
+                      {/* Dropdown Items on Mobile */}
+                      <AnimatePresence>
+                        {isMobileServicesOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="pl-6 flex flex-col bg-secondary/5 border-l border-gold/25 overflow-hidden"
+                          >
+                            <Link
+                              href="/services"
+                              onClick={() => {
+                                setIsOpen(false);
+                                setIsMobileServicesOpen(false);
+                              }}
+                              className="px-4 py-3 text-[0.68rem] font-bold uppercase tracking-[0.15em] text-gold hover:text-primary transition-colors flex items-center justify-between"
+                            >
+                              <span>All Services Overview</span>
+                              <ChevronRight size={14} />
+                            </Link>
+                            {serviceCatalog.map((service) => {
+                              const isSubActive = pathname === `/services/${service.slug}`;
+                              return (
+                                <Link
+                                  key={service.slug}
+                                  href={`/services/${service.slug}`}
+                                  onClick={() => {
+                                    setIsOpen(false);
+                                    setIsMobileServicesOpen(false);
+                                  }}
+                                  className={`px-4 py-3 text-[0.72rem] font-semibold uppercase tracking-wider transition-colors flex items-center justify-between ${
+                                    isSubActive ? "text-primary font-bold" : "text-secondary/70 hover:text-primary"
+                                  }`}
+                                >
+                                  <span>{service.shortTitle}</span>
+                                  <ChevronRight size={14} className={isSubActive ? "opacity-100" : "opacity-40"} />
+                                </Link>
+                              );
+                            })}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                }
+
                 const isActive = pathname === link.href;
                 return (
                   <Link

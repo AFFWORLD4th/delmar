@@ -190,7 +190,7 @@ export default function Home() {
                   className="text-2xl font-black font-heading"
                   style={{ color: "var(--gold)" }}
                 >
-                  Dubai, UAE
+                  Muscat, Oman
                 </div>
                 <div className="text-[0.6rem] uppercase tracking-[0.2em] text-primary-foreground/50 mt-1">
                   Globally Connected

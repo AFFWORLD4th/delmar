@@ -110,7 +110,7 @@ export function SiteFooter() {
             <ul className="space-y-4 text-[0.72rem] tracking-wider text-primary-foreground/50">
               <li className="flex items-start gap-2.5">
                 <MapPin size={14} className="mt-0.5 shrink-0" style={{ color: "var(--gold)" }} />
-                <span className="leading-relaxed">Dubai, United Arab Emirates</span>
+                <span className="leading-relaxed">Muscat, Oman</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail size={14} className="shrink-0" style={{ color: "var(--gold)" }} />
@@ -139,10 +139,10 @@ export function SiteFooter() {
         >
           <p>&copy; {new Date().getFullYear()} Delmar Services. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="#" className="hover:text-primary-foreground transition-colors">
+            <Link href="/privacy" className="hover:text-primary-foreground transition-colors">
               Privacy Policy
             </Link>
-            <Link href="#" className="hover:text-primary-foreground transition-colors">
+            <Link href="/terms" className="hover:text-primary-foreground transition-colors">
               Terms of Use
             </Link>
           </div>

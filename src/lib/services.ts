@@ -37,8 +37,8 @@ export const serviceCatalog: ServiceOffering[] = [
     overview:
       "Keshar Marine delivers disciplined ship management and daily operational support for owners and operators. The service covers technical supervision, operational coordination, crew interfaces, voyage performance follow-up, and compliance control so vessels remain safe, efficient, and commercially dependable.",
     icon: Ship,
-    image: "/images/ship-management-operation.jpg",
-    heroImage: "/images/ship-management-operation.jpg",
+    image: "/images/ship-management-operation.png",
+    heroImage: "/images/ship-management-operation.png",
     highlights: [
       "Technical management",
       "Operational oversight",
@@ -154,7 +154,7 @@ export const serviceCatalog: ServiceOffering[] = [
       "Keshar Marine acts as a dependable local partner for shipping lines, principals, owners, and operators. We coordinate port formalities, vessel handling, customs documentation, local authorities, crew and immigration support, and daily operational communication during port calls.",
     icon: Anchor,
     image: "/images/shipping-agency.png",
-    heroImage: "/images/top.jpeg",
+    heroImage: "/images/shipping-agency.png",
     highlights: [
       "Vessel handling",
       "Port formalities",
@@ -230,7 +230,7 @@ export const serviceCatalog: ServiceOffering[] = [
       "Keshar Marine assists owners and operators with vessel inspection and registration requirements. We support flag state and class registration, pre-purchase and condition surveys, compliance audits, certification follow-up, document readiness, and technical attendance where required.",
     icon: ClipboardCheck,
     image: "/images/vessel-inspection.png",
-    heroImage: "/images/about-hero.png",
+    heroImage: "/images/vessel-inspection.png",
     highlights: [
       "Flag state registration",
       "Class registration",

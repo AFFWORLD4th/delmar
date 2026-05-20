@@ -2,16 +2,29 @@
 
 import Link from "next/link";
 import { MapPin, Mail, Clock, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import { serviceCatalog } from "@/lib/services";
 
-export default function Contact() {
+function ContactContent() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const searchParams = useSearchParams();
+  const [selectedService, setSelectedService] = useState("");
+
+  useEffect(() => {
+    const serviceParam = searchParams.get("service");
+    if (serviceParam) {
+      setSelectedService(serviceParam);
+    }
+  }, [searchParams]);
 
   const contactItems = [
     {
       icon: MapPin,
       title: "Office Location",
-      lines: ["Business Bay, Dubai", "United Arab Emirates"],
+      lines: ["Muscat", "Oman"],
     },
     {
       icon: Mail,
@@ -99,7 +112,7 @@ export default function Contact() {
                   Or reach us instantly
                 </p>
                 <a
-                  href="https://wa.me/971501234567"
+                  href="https://wa.me/971554206643"
                   target="_blank"
                   rel="noopener noreferrer"
                   id="contact-whatsapp-cta"
@@ -152,11 +165,51 @@ export default function Contact() {
                     method="POST"
                     onSubmit={async (e) => {
                       e.preventDefault();
-                      // Simulate submission
-                      await new Promise((r) => setTimeout(r, 600));
-                      setSubmitted(true);
+                      setIsSubmitting(true);
+                      setError(null);
+                      
+                      const formData = new FormData(e.currentTarget);
+                      const firstName = formData.get("firstName") as string;
+                      const lastName = formData.get("lastName") as string;
+                      const email = formData.get("email") as string;
+                      const phone = formData.get("phone") as string;
+                      const service = formData.get("service") as string;
+                      const message = formData.get("message") as string;
+
+                      try {
+                        const res = await fetch("/api/contact", {
+                          method: "POST",
+                          headers: {
+                            "Content-Type": "application/json",
+                          },
+                          body: JSON.stringify({
+                            name: `${firstName} ${lastName}`,
+                            email,
+                            phone,
+                            subject: service ? `Quote Request: ${service}` : "General Inquiry",
+                            message,
+                          }),
+                        });
+
+                        if (res.ok) {
+                          setSubmitted(true);
+                        } else {
+                          const data = await res.json();
+                          setError(data.message || "Failed to send message. Please try again.");
+                        }
+                      } catch (err) {
+                        setError("An unexpected error occurred. Please check your connection and try again.");
+                      } finally {
+                        setIsSubmitting(false);
+                      }
                     }}
                   >
+                    {error && (
+                      <div className="p-4 bg-red-500/10 border border-red-500/30 text-red-200 text-xs font-semibold rounded-sm">
+                        {error}
+                      </div>
+                    )}
+
                     {/* Name row */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div>
@@ -193,21 +246,39 @@ export default function Contact() {
                       </div>
                     </div>
 
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-[0.62rem] font-bold uppercase tracking-[0.2em] mb-3 text-primary-foreground/40"
-                      >
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        placeholder="john@company.com"
-                        className="input-premium"
-                      />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div>
+                        <label
+                          htmlFor="email"
+                          className="block text-[0.62rem] font-bold uppercase tracking-[0.2em] mb-3 text-primary-foreground/40"
+                        >
+                          Email Address
+                        </label>
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          required
+                          placeholder="john@company.com"
+                          className="input-premium"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="phone"
+                          className="block text-[0.62rem] font-bold uppercase tracking-[0.2em] mb-3 text-primary-foreground/40"
+                        >
+                          Phone Number
+                        </label>
+                        <input
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          required
+                          placeholder="+971 55 420 6643"
+                          className="input-premium"
+                        />
+                      </div>
                     </div>
 
                     <div>
@@ -221,14 +292,15 @@ export default function Contact() {
                         id="service"
                         name="service"
                         className="input-premium"
-                        defaultValue=""
+                        value={selectedService}
+                        onChange={(e) => setSelectedService(e.target.value)}
                       >
                         <option value="" disabled>Select a service</option>
-                        <option value="maritime">Maritime Support</option>
-                        <option value="supply">Supply & Coordination</option>
-                        <option value="logistics">Logistics Solutions</option>
-                        <option value="business">Business Support Services</option>
-                        <option value="operations">Operational Assistance</option>
+                        {serviceCatalog.map((service) => (
+                          <option key={service.slug} value={service.slug}>
+                            {service.title}
+                          </option>
+                        ))}
                       </select>
                     </div>
 
@@ -251,11 +323,12 @@ export default function Contact() {
 
                     <button
                       type="submit"
+                      disabled={isSubmitting}
                       id="contact-submit-btn"
-                      className="inline-flex items-center gap-3 px-10 py-4 font-black text-[0.72rem] uppercase tracking-[0.18em] transition-all duration-300 hover:opacity-85 hover:-translate-y-px"
+                      className="inline-flex items-center gap-3 px-10 py-4 font-black text-[0.72rem] uppercase tracking-[0.18em] transition-all duration-300 hover:opacity-85 hover:-translate-y-px disabled:opacity-50 disabled:pointer-events-none"
                       style={{ background: "var(--gold)", color: "#111" }}
                     >
-                      Send Message
+                      {isSubmitting ? "Sending..." : "Send Message"}
                       <ArrowRight size={16} />
                     </button>
                   </form>
@@ -269,7 +342,7 @@ export default function Contact() {
       {/* ─── MAP PLACEHOLDER ─── */}
       <section className="h-[320px] bg-secondary/5 relative overflow-hidden border-t border-secondary/10">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.178864393498!2d55.26503!3d25.18539!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f69e547462bbd%3A0x9c038d9b6c61c5f0!2sBusiness%20Bay%2C%20Dubai!5e0!3m2!1sen!2sae!4v1684000000000!5m2!1sen!2sae"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116972.3361543314!2d58.28610531542969!3d23.584344078516086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e91f114c0000001%3A0x6a086a60e0a5ea0!2sMuscat%2C%20Oman!5e0!3m2!1sen!2s!4v1716200000000!5m2!1sen!2s"
           width="100%"
           height="100%"
           style={{ border: 0, filter: "grayscale(100%) contrast(1.05) opacity(0.7)" }}
@@ -280,5 +353,20 @@ export default function Contact() {
         />
       </section>
     </div>
+  );
+}
+
+export default function Contact() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-primary flex items-center justify-center text-primary-foreground font-sans">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-10 h-10 border-4 border-gold border-t-transparent rounded-full animate-spin" />
+          <p className="text-[0.65rem] uppercase tracking-[0.2em] text-gold">Loading contact form...</p>
+        </div>
+      </div>
+    }>
+      <ContactContent />
+    </Suspense>
   );
 }

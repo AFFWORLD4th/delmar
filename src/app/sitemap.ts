@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { certifications } from '@/lib/certifications';
 import { serviceCatalog } from '@/lib/services';
+import { blogPosts } from '@/lib/blogs';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.kesharmarine.com';
@@ -21,8 +22,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/terms-and-conditions',
     '/site-map',
     '/contact',
+    '/blog',
     ...serviceCatalog.map((service) => `/services/${service.slug}`),
     ...certifications.map((certification) => `/certifications/${certification.slug}`),
+    ...blogPosts.map((post) => `/blog/${post.slug}`),
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: currentDate,
