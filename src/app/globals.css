@@ -10,20 +10,24 @@
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --color-cyan: var(--cyan);
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
 }
 
 :root {
-  --background: #F5F9FD;
-  --foreground: #0B1B3D;
-  --primary: #0A1B2E;
-  --primary-foreground: #F5F9FD;
-  --secondary: #173F5F;
+  --background: #F4F7FB;
+  --foreground: #0B1E36;
+  --primary: #0A2240;
+  --primary-foreground: #F4F7FB;
+  --secondary: #0084C7;
   --secondary-foreground: #FFFFFF;
-  --gold: #FFA500;
-  --gold-light: #FFC04D;
-  --gold-dark: #E68000;
+  --cyan: #00F0FF;
+  --gold: #FF9F1C;
+  --gold-light: #FFC300;
+  --gold-dark: #FF7B00;
 }
 
 /* ============================================
@@ -316,4 +320,58 @@
   border-radius: 9999px;
   background: #25D366;
   animation: pulse-ring 1.8s ease-out infinite;
+}
+
+/* Glassmorphism & High-End Design Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 132, 199, 0.06);
+}
+
+.glass-panel-dark {
+  background: rgba(7, 29, 61, 0.72);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 240, 255, 0.12);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.32), 0 0 20px rgba(0, 240, 255, 0.05);
+}
+
+.bg-ocean-depths {
+  background: linear-gradient(135deg, #05142B 0%, #092248 50%, #0D346B 100%);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-ocean {
+  background: linear-gradient(135deg, var(--cyan) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-hover {
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 30px rgba(255, 159, 28, 0.6);
+  transform: translateY(-2px);
+}
+
+.glow-cyan-hover {
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glow-cyan-hover:hover {
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+  border-color: rgba(0, 240, 255, 0.5);
+  transform: translateY(-2px);
 }

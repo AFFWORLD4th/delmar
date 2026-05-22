@@ -10,7 +10,7 @@ export default function PrivacyPolicy() {
     <div className="flex flex-col w-full font-sans">
       {/* ─── HERO ─── */}
       <section className="relative h-[40vh] min-h-[300px] flex items-end pb-12 bg-primary text-primary-foreground overflow-hidden">
-        <div className="absolute inset-0 bg-[#0A1B2E]/60 z-10" />
+        <div className="absolute inset-0 bg-[#071D3D]/80 z-10" />
         <div
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/services_hero.png')" }}
@@ -18,16 +18,16 @@ export default function PrivacyPolicy() {
         <div className="absolute bottom-0 left-0 right-0 h-24 z-10 bg-gradient-to-t from-background to-transparent" />
 
         <div className="container mx-auto px-6 lg:px-16 relative z-20">
-          <div className="flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.2em] text-primary-foreground/40 mb-4 font-medium">
-            <Link href="/" className="hover:text-primary-foreground/70 transition-colors">Home</Link>
+          <div className="flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.2em] text-primary-foreground/60 mb-4 font-medium">
+            <Link href="/" className="hover:text-cyan transition-colors">Home</Link>
             <span>/</span>
-            <span style={{ color: "var(--gold)" }}>Privacy Policy</span>
+            <span className="text-gold">Privacy Policy</span>
           </div>
           <h1
             className="text-4xl md:text-5xl font-black font-heading leading-tight"
             style={{ letterSpacing: "-0.02em" }}
           >
-            Privacy <span style={{ color: "var(--gold)" }}>Policy</span>
+            Privacy <span className="text-gradient-gold">Policy</span>
           </h1>
           <p className="text-[0.68rem] uppercase tracking-[0.15em] text-primary-foreground/40 mt-3 font-semibold">
             Last Updated: May 20, 2026
@@ -36,8 +36,12 @@ export default function PrivacyPolicy() {
       </section>
 
       {/* ─── CONTENT ─── */}
-      <section className="py-20 bg-background text-secondary">
-        <div className="container mx-auto px-6 lg:px-16 max-w-4xl">
+      <section className="py-20 bg-background text-secondary relative overflow-hidden">
+        {/* Decorative background blur spheres */}
+        <div className="absolute top-1/4 -left-32 w-80 h-80 bg-[#0077B6]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-[#FF9F1C]/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="container mx-auto px-6 lg:px-16 max-w-4xl relative z-10">
           <div className="space-y-12 leading-relaxed text-secondary/80 font-light text-base">
             
             <p className="text-lg text-secondary/90 leading-relaxed border-l-2 border-gold pl-6 py-1">
@@ -130,10 +134,10 @@ export default function PrivacyPolicy() {
               <p>
                 If you have questions, concerns, or requests regarding this Privacy Policy or our data protection measures, please reach out to us:
               </p>
-              <div className="p-6 bg-secondary/5 border border-secondary/10 space-y-2 mt-4 text-sm font-medium">
-                <p><strong style={{ color: "var(--primary)" }}>Office Address:</strong> Muscat, Oman</p>
-                <p><strong style={{ color: "var(--primary)" }}>Phone Support:</strong> +968 7738 8021</p>
-                <p><strong style={{ color: "var(--primary)" }}>Official Email:</strong> info@delmarservice.com</p>
+              <div className="p-8 glass-panel border border-[#00B4D8]/10 space-y-3 mt-6 rounded-2xl shadow-sm text-sm font-semibold text-secondary/80">
+                <p><strong style={{ color: "var(--primary)" }}>Office Address:</strong> <span className="font-light">Muscat, Oman</span></p>
+                <p><strong style={{ color: "var(--primary)" }}>Phone Support:</strong> <a href="tel:+96877388021" className="hover:text-cyan transition-colors font-light">+968 7738 8021</a></p>
+                <p><strong style={{ color: "var(--primary)" }}>Official Email:</strong> <a href="mailto:info@delmarservice.com" className="hover:text-cyan transition-colors font-light">info@delmarservice.com</a></p>
               </div>
             </div>
 

@@ -47,7 +47,7 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
     <div className="flex flex-col w-full font-sans">
       {/* ─── HERO HEADER ─── */}
       <section className="relative h-[65vh] min-h-[480px] flex items-end pb-16 bg-primary text-primary-foreground overflow-hidden">
-        <div className="absolute inset-0 bg-[#0A1B2E]/75 z-10" />
+        <div className="absolute inset-0 bg-[#071D3D]/80 z-10" />
         <div
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{ backgroundImage: `url('${post.coverImage}')` }}
@@ -55,15 +55,15 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
         <div className="absolute bottom-0 left-0 right-0 h-40 z-10 bg-gradient-to-t from-background to-transparent" />
 
         <div className="container mx-auto px-6 lg:px-16 relative z-20">
-          <div className="flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.2em] text-primary-foreground/40 mb-6 font-medium">
-            <Link href="/" className="hover:text-primary-foreground/70 transition-colors">Home</Link>
+          <div className="flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.2em] text-primary-foreground/60 mb-6 font-medium">
+            <Link href="/" className="hover:text-cyan transition-colors">Home</Link>
             <span>/</span>
-            <Link href="/blog" className="hover:text-primary-foreground/70 transition-colors">Insights</Link>
+            <Link href="/blog" className="hover:text-cyan transition-colors">Insights</Link>
             <span>/</span>
-            <span style={{ color: "var(--gold)" }}>Detail</span>
+            <span className="text-gold">Detail</span>
           </div>
 
-          <div className="inline-block bg-gold/90 text-[#0A1B2E] text-[0.6rem] font-black uppercase tracking-wider px-3.5 py-1 mb-4 rounded-sm">
+          <div className="inline-block bg-gold/90 text-primary text-[0.6rem] font-black uppercase tracking-wider px-3.5 py-1 mb-4 rounded-sm">
             {post.category}
           </div>
 
@@ -74,7 +74,7 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
             {post.title}
           </h1>
 
-          <div className="flex flex-wrap items-center gap-6 mt-8 pt-6 border-t border-primary-foreground/10 text-xs text-primary-foreground/60 font-medium">
+          <div className="flex flex-wrap items-center gap-6 mt-8 pt-6 border-t border-white/10 text-xs text-primary-foreground/75 font-semibold">
             {/* Author */}
             <div className="flex items-center gap-2.5">
               <div className="h-8 w-8 rounded-full bg-gold/20 text-gold flex items-center justify-center text-xs font-bold font-heading border border-gold/30">
@@ -82,7 +82,7 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
               </div>
               <div>
                 <p className="font-bold text-primary-foreground">{post.author.name}</p>
-                <p className="text-[0.62rem] text-primary-foreground/40">{post.author.role}</p>
+                <p className="text-[0.62rem] text-primary-foreground/60">{post.author.role}</p>
               </div>
             </div>
 
@@ -90,7 +90,7 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
 
             {/* Date */}
             <span className="flex items-center gap-1.5">
-              <Calendar className="h-4 w-4 text-gold/60" />
+              <Calendar className="h-4 w-4 text-cyan" />
               {post.publishDate}
             </span>
 
@@ -98,7 +98,7 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
 
             {/* Reading Time */}
             <span className="flex items-center gap-1.5">
-              <Clock className="h-4 w-4 text-gold/60" />
+              <Clock className="h-4 w-4 text-cyan" />
               {post.readingTime}
             </span>
           </div>
@@ -106,8 +106,12 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
       </section>
 
       {/* ─── ARTICLE CONTENT ─── */}
-      <section className="py-20 bg-background text-secondary">
-        <div className="container mx-auto px-6 lg:px-16">
+      <section className="py-20 bg-background text-secondary relative overflow-hidden">
+        {/* Decorative background blurs */}
+        <div className="absolute top-1/4 -left-32 w-80 h-80 bg-[#0077B6]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-[#FF9F1C]/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="container mx-auto px-6 lg:px-16 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             
             {/* Main content column */}
@@ -115,9 +119,9 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
               {/* Back to Blog */}
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 text-xs font-bold text-primary hover:text-gold tracking-wider uppercase mb-10 transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-bold text-primary hover:text-cyan tracking-wider uppercase mb-10 transition-colors"
               >
-                <ArrowLeft className="h-4 w-4" />
+                <ArrowLeft className="h-4 w-4 text-cyan" />
                 Back to Insights
               </Link>
 
@@ -135,12 +139,12 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
               />
 
               {/* Tag chips */}
-              <div className="flex flex-wrap items-center gap-2 mt-12 pt-8 border-t border-secondary/10">
-                <span className="text-xs font-bold uppercase tracking-wider text-secondary/40 mr-2">Tags:</span>
+              <div className="flex flex-wrap items-center gap-2 mt-12 pt-8 border-t border-secondary/15">
+                <span className="text-xs font-bold uppercase tracking-wider text-secondary/50 mr-2">Tags:</span>
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="bg-secondary/5 text-secondary/70 border border-secondary/10 text-[0.68rem] font-semibold uppercase tracking-wider px-3.5 py-1 rounded-sm"
+                    className="bg-[#0077B6]/5 text-secondary/80 border border-secondary/10 text-[0.68rem] font-semibold uppercase tracking-wider px-3.5 py-1 rounded-sm"
                   >
                     #{tag}
                   </span>
@@ -150,29 +154,29 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
 
             {/* Sidebar column */}
             <div className="lg:col-span-4 space-y-8">
-              {/* CTA Panel */}
-              <div className="p-8 bg-secondary/5 border border-secondary/10">
+              {/* CTA Panel (Frosted Glass) */}
+              <div className="p-8 glass-panel border border-[#00B4D8]/20 rounded-2xl shadow-md">
                 <h3 className="text-lg font-black font-heading text-primary mb-4">Partner with Delmar</h3>
-                <p className="text-secondary/70 text-xs leading-relaxed mb-6">
+                <p className="text-secondary/75 text-xs leading-relaxed mb-6">
                   Leverage our strategic operational footprints in Muscat, Sohar, and regional trade corridors to run your operations smoothly.
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-3 w-full py-4 bg-primary text-primary-foreground hover:bg-gold hover:text-[#0A1B2E] font-black text-[0.72rem] uppercase tracking-[0.18em] transition-all duration-300"
+                  className="inline-flex items-center justify-center gap-3 w-full py-4 bg-primary text-primary-foreground hover:bg-[#0077B6] font-black text-[0.72rem] uppercase tracking-[0.18em] transition-all duration-300 glow-cyan-hover rounded-sm"
                 >
                   Contact Support
                   <ArrowRight size={16} />
                 </Link>
               </div>
 
-              {/* Author Info */}
-              <div className="p-8 border border-secondary/10 text-center">
-                <div className="h-16 w-16 mx-auto rounded-full bg-gold/10 text-gold flex items-center justify-center text-xl font-bold font-heading border border-gold/30 mb-4">
+              {/* Author Info (Frosted Glass) */}
+              <div className="p-8 glass-panel border border-secondary/10 text-center rounded-2xl shadow-sm">
+                <div className="h-16 w-16 mx-auto rounded-full bg-[#0077B6]/15 text-[#0077B6] flex items-center justify-center text-xl font-bold font-heading border border-[#0077B6]/30 mb-4">
                   {post.author.avatar}
                 </div>
-                <h4 className="text-base font-bold text-secondary">{post.author.name}</h4>
+                <h4 className="text-base font-bold text-primary">{post.author.name}</h4>
                 <p className="text-xs text-secondary/50 mb-3">{post.author.role}</p>
-                <p className="text-xs text-secondary/65 font-light leading-relaxed">
+                <p className="text-xs text-secondary/70 font-light leading-relaxed">
                   Delmar Services marine analyst providing operational updates and compliance guidance.
                 </p>
               </div>
@@ -183,21 +187,21 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
       </section>
 
       {/* ─── RELATED INSIGHTS ─── */}
-      <section className="py-24 bg-secondary/5 border-t border-secondary/10">
+      <section className="py-24 bg-primary/5 border-t border-secondary/15">
         <div className="container mx-auto px-6 lg:px-16">
           <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-12">
             <div>
               <div className="section-label">More From Us</div>
               <h2 className="text-2xl md:text-3xl font-black font-heading text-primary uppercase tracking-tight">
-                Related <span style={{ color: "var(--gold)" }}>Insights</span>
+                Related <span className="text-gradient-gold">Insights</span>
               </h2>
             </div>
             <Link
               href="/blog"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-gold uppercase tracking-wider transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-cyan uppercase tracking-wider transition-colors duration-300"
             >
               See All Articles
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4 text-cyan" />
             </Link>
           </div>
 
@@ -205,7 +209,7 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
             {relatedPosts.map((p) => (
               <article
                 key={p.slug}
-                className="flex flex-col bg-background rounded-xl overflow-hidden border border-secondary/10 group hover:border-secondary/20 transition-all duration-300"
+                className="flex flex-col bg-background rounded-xl overflow-hidden border border-secondary/10 group hover:border-[#00B4D8]/30 transition-all duration-300 glow-cyan-hover shadow-sm"
               >
                 <div className="relative h-44 overflow-hidden">
                   <Image
@@ -217,20 +221,20 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
                   />
                 </div>
                 <div className="p-5 flex flex-col flex-1">
-                  <div className="flex items-center gap-2 text-[0.65rem] text-secondary/50 mb-3 font-medium">
-                    <span>{p.publishDate}</span>
+                  <div className="flex items-center gap-2 text-[0.65rem] text-secondary/60 mb-3 font-semibold">
+                    <span className="text-cyan">{p.publishDate}</span>
                     <span>•</span>
-                    <span>{p.readingTime}</span>
+                    <span className="text-cyan">{p.readingTime}</span>
                   </div>
-                  <h4 className="text-base font-bold font-heading text-primary leading-snug mb-3 group-hover:text-primary/80 transition-colors line-clamp-2">
+                  <h4 className="text-base font-bold font-heading text-primary leading-snug mb-3 group-hover:text-cyan transition-colors line-clamp-2">
                     <Link href={`/blog/${p.slug}`}>{p.title}</Link>
                   </h4>
                   <Link
                     href={`/blog/${p.slug}`}
-                    className="inline-flex items-center gap-0.5 text-xs font-bold text-primary group-hover:gap-1 transition-all mt-auto pt-4 border-t border-secondary/10"
+                    className="inline-flex items-center gap-0.5 text-xs font-bold text-primary hover:text-cyan group-hover:gap-1 transition-all mt-auto pt-4 border-t border-secondary/15"
                   >
                     Read Story
-                    <ArrowRight className="h-3.5 w-3.5" />
+                    <ArrowRight className="h-3.5 w-3.5 text-cyan" />
                   </Link>
                 </div>
               </article>

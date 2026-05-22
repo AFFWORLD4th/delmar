@@ -68,20 +68,20 @@ export default function About() {
 
       {/* ─── HERO ─── */}
       <section className="relative h-[65vh] min-h-[500px] flex items-end pb-20 bg-primary text-primary-foreground overflow-hidden">
-        <div className="absolute inset-0 bg-black/55 z-10" />
+        <div className="absolute inset-0 bg-[#071D3D]/80 z-10" />
         <div
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/about_hero.png')" }}
         />
         {/* Bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-40 z-10 bg-gradient-to-t from-black/60 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-40 z-10 bg-gradient-to-t from-background to-transparent" />
 
         <div className="container mx-auto px-6 lg:px-16 relative z-20">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.2em] text-primary-foreground/40 mb-6 font-medium">
-            <Link href="/" className="hover:text-primary-foreground/70 transition-colors">Home</Link>
+          <div className="flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.2em] text-primary-foreground/60 mb-6 font-medium">
+            <Link href="/" className="hover:text-cyan transition-colors">Home</Link>
             <span>/</span>
-            <span style={{ color: "var(--gold)" }}>About Us</span>
+            <span className="text-gold">About Us</span>
           </div>
           <div className="section-label">Who We Are</div>
           <h1
@@ -90,32 +90,35 @@ export default function About() {
           >
             About
             <br />
-            <span style={{ color: "var(--gold)" }}>Delmar</span>
+            <span className="text-gradient-gold">Delmar</span>
           </h1>
         </div>
       </section>
 
       {/* ─── STORY ─── */}
-      <section className="py-28 lg:py-36 bg-background">
-        <div className="container mx-auto px-6 lg:px-16">
+      <section className="py-28 lg:py-36 bg-background relative overflow-hidden">
+        {/* Decorative background blur spheres */}
+        <div className="absolute top-1/4 -left-32 w-80 h-80 bg-cyan/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="container mx-auto px-6 lg:px-16 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
             {/* Copy */}
             <div>
               <div className="section-label">Our Story</div>
               <h2
-                className="text-4xl md:text-5xl font-black font-heading mb-8 leading-tight"
+                className="text-4xl md:text-5xl font-black font-heading mb-8 leading-tight text-primary"
                 style={{ letterSpacing: "-0.02em" }}
               >
                 Flexible, Reliable Support
                 <br />
-                <span style={{ color: "var(--gold)" }}>Built for the World</span>
+                <span className="text-gradient-gold">Built for the World</span>
               </h2>
               <div
-                className="w-12 h-[2px] mb-8"
-                style={{ background: "var(--gold)" }}
+                className="w-16 h-[3px] mb-8 bg-gradient-to-r from-gold to-gold-light rounded-full"
               />
-              <div className="space-y-5 text-secondary/70 text-base leading-relaxed">
+              <div className="space-y-5 text-foreground/80 text-base leading-relaxed font-light">
                 <p>
                   Delmar Services was founded on a simple conviction: that businesses operating in the maritime and international space deserve a partner who is as committed to their success as they are. From day one, we have built every process, every team, and every system with this in mind.
                 </p>
@@ -129,8 +132,7 @@ export default function About() {
               <Link
                 href="/contact"
                 id="about-cta-contact"
-                className="inline-flex items-center mt-10 text-[0.72rem] font-black uppercase tracking-[0.18em] group transition-opacity hover:opacity-70"
-                style={{ color: "var(--gold)" }}
+                className="inline-flex items-center mt-10 text-[0.72rem] font-black uppercase tracking-[0.18em] group transition-all duration-300 text-gold hover:text-cyan"
               >
                 Work With Us
                 <ArrowRight className="ml-3 group-hover:translate-x-1 transition-transform" size={16} />
@@ -139,16 +141,24 @@ export default function About() {
 
             {/* Image */}
             <div className="relative">
-              <div className="h-[580px] overflow-hidden">
+              <div className="h-[580px] overflow-hidden rounded-2xl shadow-2xl border border-secondary/10">
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 hover:scale-105 h-[580px]"
                   style={{ backgroundImage: "url('/images/about_story.png')" }}
                 />
               </div>
-              {/* Gold border accent */}
+              {/* Corner accent */}
               <div
-                className="absolute -bottom-4 -left-4 w-full h-full border pointer-events-none"
-                style={{ borderColor: "var(--gold)", opacity: 0.2 }}
+                className="absolute pointer-events-none"
+                style={{
+                  bottom: "-12px",
+                  right: "-12px",
+                  width: "80px",
+                  height: "80px",
+                  borderBottom: `2px solid var(--cyan)`,
+                  borderRight: `2px solid var(--cyan)`,
+                  opacity: 0.6,
+                }}
               />
             </div>
           </div>
@@ -156,8 +166,9 @@ export default function About() {
       </section>
 
       {/* ─── WHY DELMAR — NUMBERED DIFFERENTIATORS ─── */}
-      <section className="py-28 lg:py-36 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-6 lg:px-16">
+      <section className="relative py-28 lg:py-36 bg-ocean-depths text-primary-foreground overflow-hidden">
+        <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-secondary/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="container mx-auto px-6 lg:px-16 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
             {/* Left sticky heading */}
             <div className="lg:col-span-2">
@@ -168,11 +179,10 @@ export default function About() {
               >
                 What Sets Us
                 <br />
-                <span style={{ color: "var(--gold)" }}>Apart</span>
+                <span className="text-gradient-gold">Apart</span>
               </h2>
               <div
-                className="w-12 h-[2px]"
-                style={{ background: "var(--gold)" }}
+                className="w-16 h-[3px] bg-gradient-to-r from-gold to-gold-light rounded-full"
               />
             </div>
 
@@ -181,18 +191,16 @@ export default function About() {
               {differentiators.map((item) => (
                 <div
                   key={item.number}
-                  className="border border-primary-foreground/10 p-8 hover-lift group"
-                  style={{ background: "rgba(255,255,255,0.03)" }}
+                  className="p-8 rounded-2xl glass-panel-dark border border-white/10 glow-cyan-hover group"
                 >
-                  <div className="service-number mb-4">{item.number}</div>
+                  <div className="service-number mb-4 text-cyan">{item.number}</div>
                   <div
-                    className="w-6 h-[1px] mb-5 group-hover:w-12 transition-all duration-500"
-                    style={{ background: "var(--gold)" }}
+                    className="w-8 h-[1px] mb-5 bg-gradient-to-r from-gold to-gold-light group-hover:w-16 transition-all duration-500 rounded-full"
                   />
                   <h3 className="text-xl font-black font-heading text-primary-foreground mb-3">
                     {item.title}
                   </h3>
-                  <p className="text-primary-foreground/50 text-sm leading-relaxed">
+                  <p className="text-primary-foreground/75 text-sm leading-relaxed font-light">
                     {item.desc}
                   </p>
                 </div>
@@ -203,17 +211,21 @@ export default function About() {
       </section>
 
       {/* ─── VALUES ─── */}
-      <section className="py-28 lg:py-36 bg-background">
-        <div className="container mx-auto px-6 lg:px-16">
+      <section className="relative py-28 lg:py-36 bg-background overflow-hidden">
+        {/* Decorative background blur spheres */}
+        <div className="absolute top-1/4 -right-32 w-80 h-80 bg-cyan/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 -left-32 w-80 h-80 bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="container mx-auto px-6 lg:px-16 relative z-10">
           <div className="text-center max-w-2xl mx-auto mb-20">
             <div className="section-label justify-center" style={{ justifyContent: "center" }}>Our Commitment</div>
             <h2
-              className="text-4xl md:text-5xl font-black font-heading leading-tight"
+              className="text-4xl md:text-5xl font-black font-heading leading-tight text-primary"
               style={{ letterSpacing: "-0.02em" }}
             >
               Delivering Excellence,
               <br />
-              <span style={{ color: "var(--gold)" }}>Globally</span>
+              <span className="text-gradient-gold">Globally</span>
             </h2>
           </div>
 
@@ -222,22 +234,20 @@ export default function About() {
               <div
                 key={value.number}
                 id={`value-${value.number}`}
-                className="border border-secondary/10 p-8 hover-lift group cursor-default"
+                className="p-8 glass-panel border border-cyan/15 rounded-2xl hover-lift glow-hover group cursor-default shadow-sm"
               >
                 <div
-                  className="text-[0.65rem] font-bold uppercase tracking-[0.2em] mb-4"
-                  style={{ color: "var(--gold)" }}
+                  className="text-[0.65rem] font-bold uppercase tracking-[0.2em] mb-4 text-gold"
                 >
                   {value.number}
                 </div>
                 <div
-                  className="w-8 h-[1px] mb-5 group-hover:w-14 transition-all duration-500"
-                  style={{ background: "var(--gold)" }}
+                  className="w-8 h-[1px] mb-5 bg-gradient-to-r from-gold to-gold-light group-hover:w-16 transition-all duration-500 rounded-full"
                 />
                 <h3 className="text-lg font-black font-heading text-primary mb-3">
                   {value.title}
                 </h3>
-                <p className="text-secondary/60 text-sm leading-relaxed">
+                <p className="text-foreground/80 text-sm leading-relaxed font-light">
                   {value.desc}
                 </p>
               </div>
@@ -248,12 +258,13 @@ export default function About() {
 
       {/* ─── CTA STRIP ─── */}
       <section
-        className="py-16 text-primary-foreground"
-        style={{ background: "var(--gold)" }}
+        className="py-20 text-primary-foreground relative overflow-hidden"
+        style={{ background: "linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%)" }}
       >
-        <div className="container mx-auto px-6 lg:px-16 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="absolute inset-0 bg-[#0A2240]/5 z-0" />
+        <div className="container mx-auto px-6 lg:px-16 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
           <h2
-            className="text-2xl md:text-3xl font-black font-heading text-primary"
+            className="text-2xl md:text-4xl font-black font-heading text-primary leading-tight max-w-xl"
             style={{ letterSpacing: "-0.02em" }}
           >
             Ready to work with a partner you can trust?
@@ -261,7 +272,7 @@ export default function About() {
           <Link
             href="/contact"
             id="about-bottom-cta"
-            className="shrink-0 inline-flex items-center gap-3 bg-primary text-primary-foreground px-10 py-4 font-black text-[0.72rem] uppercase tracking-[0.18em] hover:bg-secondary transition-colors"
+            className="shrink-0 inline-flex items-center gap-3 bg-primary text-primary-foreground px-10 py-4 font-black text-[0.72rem] uppercase tracking-[0.18em] transition-all duration-300 hover:-translate-y-px hover:shadow-xl rounded-sm glow-cyan-hover"
           >
             Get in Touch
             <ArrowRight size={16} />
