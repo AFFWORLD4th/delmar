@@ -47,7 +47,7 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
     <div className="flex flex-col w-full font-sans">
       {/* ─── HERO HEADER ─── */}
       <section className="relative h-[65vh] min-h-[480px] flex items-end pb-16 bg-primary text-primary-foreground overflow-hidden">
-        <div className="absolute inset-0 bg-black/75 z-10" />
+        <div className="absolute inset-0 bg-[#0A1B2E]/75 z-10" />
         <div
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{ backgroundImage: `url('${post.coverImage}')` }}
@@ -63,7 +63,7 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
             <span style={{ color: "var(--gold)" }}>Detail</span>
           </div>
 
-          <div className="inline-block bg-gold/90 text-black text-[0.6rem] font-black uppercase tracking-wider px-3.5 py-1 mb-4 rounded-sm">
+          <div className="inline-block bg-gold/90 text-[#0A1B2E] text-[0.6rem] font-black uppercase tracking-wider px-3.5 py-1 mb-4 rounded-sm">
             {post.category}
           </div>
 
@@ -158,7 +158,7 @@ export default async function BlogPostDetailPage({ params }: PageProps) {
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-3 w-full py-4 bg-primary text-primary-foreground hover:bg-gold hover:text-black font-black text-[0.72rem] uppercase tracking-[0.18em] transition-all duration-300"
+                  className="inline-flex items-center justify-center gap-3 w-full py-4 bg-primary text-primary-foreground hover:bg-gold hover:text-[#0A1B2E] font-black text-[0.72rem] uppercase tracking-[0.18em] transition-all duration-300"
                 >
                   Contact Support
                   <ArrowRight size={16} />

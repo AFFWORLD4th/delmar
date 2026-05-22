@@ -4,7 +4,7 @@ import { serviceCatalog } from '@/lib/services';
 import { blogPosts } from '@/lib/blogs';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.kesharmarine.com';
+  const baseUrl = 'https://www.delmarservice.com';
   const currentDate = new Date().toISOString();
 
   const routes = [

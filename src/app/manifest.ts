@@ -2,9 +2,9 @@ import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Keshar Marine | Global Ship Management & Maritime Excellence',
-    short_name: 'Keshar Marine',
-    description: 'Keshar Marine is a global maritime powerhouse redefining ship management and end-to-end supply chain solutions.',
+    name: 'Delmar Services | Global Maritime & Business Support',
+    short_name: 'Delmar Services',
+    description: 'Delmar Services provides global maritime operations, supply, logistics coordination, and international business support.',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',

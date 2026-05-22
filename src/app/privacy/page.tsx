@@ -10,7 +10,7 @@ export default function PrivacyPolicy() {
     <div className="flex flex-col w-full font-sans">
       {/* ─── HERO ─── */}
       <section className="relative h-[40vh] min-h-[300px] flex items-end pb-12 bg-primary text-primary-foreground overflow-hidden">
-        <div className="absolute inset-0 bg-black/60 z-10" />
+        <div className="absolute inset-0 bg-[#0A1B2E]/60 z-10" />
         <div
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/services_hero.png')" }}
@@ -132,7 +132,7 @@ export default function PrivacyPolicy() {
               </p>
               <div className="p-6 bg-secondary/5 border border-secondary/10 space-y-2 mt-4 text-sm font-medium">
                 <p><strong style={{ color: "var(--primary)" }}>Office Address:</strong> Muscat, Oman</p>
-                <p><strong style={{ color: "var(--primary)" }}>Phone Support:</strong> +971 55 420 6643</p>
+                <p><strong style={{ color: "var(--primary)" }}>Phone Support:</strong> +968 7738 8021</p>
                 <p><strong style={{ color: "var(--primary)" }}>Official Email:</strong> info@delmarservice.com</p>
               </div>
             </div>

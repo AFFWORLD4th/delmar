@@ -42,7 +42,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
     <div className="flex flex-col w-full">
       {/* ─── HERO ─── */}
       <section className="relative h-[65vh] min-h-[500px] flex items-end pb-20 bg-primary text-primary-foreground overflow-hidden">
-        <div className="absolute inset-0 bg-black/75 z-10" />
+        <div className="absolute inset-0 bg-[#0A1B2E]/75 z-10" />
         <div
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{ backgroundImage: `url('${service.image || "/images/services_hero.png"}')` }}
@@ -176,7 +176,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 </div>
                 <Link
                   href={`/contact?service=${service.slug}`}
-                  className="inline-flex items-center justify-center gap-3 w-full py-4 bg-primary text-primary-foreground hover:bg-gold hover:text-black font-black text-[0.72rem] uppercase tracking-[0.18em] transition-all duration-300"
+                  className="inline-flex items-center justify-center gap-3 w-full py-4 bg-primary text-primary-foreground hover:bg-gold hover:text-[#0A1B2E] font-black text-[0.72rem] uppercase tracking-[0.18em] transition-all duration-300"
                 >
                   Request a Quote
                   <ArrowRight size={16} />

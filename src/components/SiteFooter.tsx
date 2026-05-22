@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Mail, MapPin } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 
 const services = [
   "Maritime Support",
@@ -113,9 +113,15 @@ export function SiteFooter() {
                 <span className="leading-relaxed">Muscat, Oman</span>
               </li>
               <li className="flex items-center gap-2.5">
+                <Phone size={14} className="shrink-0" style={{ color: "var(--gold)" }} />
+                <a href="tel:+96877388021" className="hover:text-primary-foreground transition-colors">
+                  +968 7738 8021
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5">
                 <Mail size={14} className="shrink-0" style={{ color: "var(--gold)" }} />
-                <a href="mailto:info@delmar-services.com" className="hover:text-primary-foreground transition-colors">
-                  info@delmar-services.com
+                <a href="mailto:info@delmarservice.com" className="hover:text-primary-foreground transition-colors">
+                  info@delmarservice.com
                 </a>
               </li>
             </ul>

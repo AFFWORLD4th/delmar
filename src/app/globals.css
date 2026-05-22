@@ -15,15 +15,15 @@
 }
 
 :root {
-  --background: #F4EFE6;
-  --foreground: #111111;
-  --primary: #111111;
-  --primary-foreground: #F4EFE6;
-  --secondary: #333333;
-  --secondary-foreground: #F4EFE6;
-  --gold: #C9A96E;
-  --gold-light: #E2C898;
-  --gold-dark: #A07840;
+  --background: #F5F9FD;
+  --foreground: #0B1B3D;
+  --primary: #0A1B2E;
+  --primary-foreground: #F5F9FD;
+  --secondary: #173F5F;
+  --secondary-foreground: #FFFFFF;
+  --gold: #FFA500;
+  --gold-light: #FFC04D;
+  --gold-dark: #E68000;
 }
 
 /* ============================================

@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/_next/', '/static/'],
       },
     ],
-    sitemap: 'https://www.kesharmarine.com/sitemap.xml',
+    sitemap: 'https://www.delmarservice.com/sitemap.xml',
   };
 }

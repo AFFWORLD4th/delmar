@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MapPin, Mail, Clock, ArrowRight } from "lucide-react";
+import { MapPin, Mail, Clock, ArrowRight, Phone } from "lucide-react";
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { serviceCatalog } from "@/lib/services";
@@ -27,6 +27,11 @@ function ContactContent() {
       lines: ["Muscat", "Oman"],
     },
     {
+      icon: Phone,
+      title: "Call / WhatsApp",
+      lines: ["+968 7738 8021"],
+    },
+    {
       icon: Mail,
       title: "Email Us",
       lines: ["info@delmarservice.com", "support@delmarservice.com"],
@@ -43,12 +48,12 @@ function ContactContent() {
 
       {/* ─── HERO ─── */}
       <section className="relative h-[65vh] min-h-[480px] flex items-end pb-20 text-primary-foreground overflow-hidden">
-        <div className="absolute inset-0 bg-black/60 z-10" />
+        <div className="absolute inset-0 bg-[#0A1B2E]/65 z-10" />
         <div
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/contact_hero.png')" }}
         />
-        <div className="absolute bottom-0 left-0 right-0 h-40 z-10 bg-gradient-to-t from-black/70 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-40 z-10 bg-gradient-to-t from-[#0A1B2E]/75 to-transparent" />
 
         <div className="container mx-auto px-6 lg:px-16 relative z-20">
           <div className="flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.2em] text-primary-foreground/40 mb-6 font-medium">
@@ -112,7 +117,7 @@ function ContactContent() {
                   Or reach us instantly
                 </p>
                 <a
-                  href="https://wa.me/971554206643"
+                  href="https://wa.me/96877388021"
                   target="_blank"
                   rel="noopener noreferrer"
                   id="contact-whatsapp-cta"
@@ -275,7 +280,7 @@ function ContactContent() {
                           id="phone"
                           name="phone"
                           required
-                          placeholder="+971 55 420 6643"
+                          placeholder="+968 7738 8021"
                           className="input-premium"
                         />
                       </div>
@@ -326,7 +331,7 @@ function ContactContent() {
                       disabled={isSubmitting}
                       id="contact-submit-btn"
                       className="inline-flex items-center gap-3 px-10 py-4 font-black text-[0.72rem] uppercase tracking-[0.18em] transition-all duration-300 hover:opacity-85 hover:-translate-y-px disabled:opacity-50 disabled:pointer-events-none"
-                      style={{ background: "var(--gold)", color: "#111" }}
+                      style={{ background: "var(--gold)", color: "var(--primary)" }}
                     >
                       {isSubmitting ? "Sending..." : "Send Message"}
                       <ArrowRight size={16} />

@@ -52,9 +52,9 @@ export default function Home() {
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('/images/home_hero.png')" }}
         />
-        {/* Dark gradient overlays */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/85 via-black/60 to-black/20" />
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
+        {/* Midnight navy gradient overlays */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#0A1B2E]/85 via-[#0A1B2E]/60 to-[#0A1B2E]/20" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#0A1B2E]/40 via-transparent to-[#0A1B2E]/20" />
 
         {/* Content */}
         <div className="container mx-auto px-6 lg:px-16 relative z-20 pt-32 pb-24">
@@ -84,7 +84,7 @@ export default function Home() {
                 href="/services"
                 id="hero-services-cta"
                 className="inline-flex items-center justify-center px-10 py-4 font-bold text-[0.72rem] uppercase tracking-[0.18em] transition-all duration-300 group hover:-translate-y-px"
-                style={{ background: "var(--gold)", color: "#111" }}
+                style={{ background: "var(--gold)", color: "var(--primary)" }}
               >
                 Our Services
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
@@ -369,7 +369,7 @@ export default function Home() {
           className="absolute inset-0 bg-cover bg-center opacity-15"
           style={{ backgroundImage: "url('/images/home_hero.png')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/70 to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0A1B2E]/80 via-[#0A1B2E]/70 to-[#0A1B2E]/50" />
 
         <div className="container mx-auto px-6 lg:px-16 relative z-10">
           <div className="max-w-2xl">
@@ -390,7 +390,7 @@ export default function Home() {
                 href="/contact"
                 id="cta-get-in-touch"
                 className="inline-flex items-center justify-center px-10 py-4 font-black text-[0.72rem] uppercase tracking-[0.18em] transition-all duration-300 hover:-translate-y-px"
-                style={{ background: "var(--gold)", color: "#111" }}
+                style={{ background: "var(--gold)", color: "var(--primary)" }}
               >
                 Get in Touch
                 <ArrowRight className="ml-2" size={16} />

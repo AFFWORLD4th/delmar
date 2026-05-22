@@ -12,7 +12,7 @@ export default function BlogIndex() {
     <div className="flex flex-col w-full font-sans">
       {/* ─── HERO ─── */}
       <section className="relative h-[50vh] min-h-[380px] flex items-end pb-16 bg-primary text-primary-foreground overflow-hidden">
-        <div className="absolute inset-0 bg-black/65 z-10" />
+        <div className="absolute inset-0 bg-[#0A1B2E]/65 z-10" />
         <div
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/blogs/oman-port-transformation.png')" }}

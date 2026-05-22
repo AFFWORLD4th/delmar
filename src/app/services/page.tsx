@@ -13,12 +13,12 @@ export default function Services() {
 
       {/* ─── HERO ─── */}
       <section className="relative h-[65vh] min-h-[500px] flex items-end pb-20 bg-primary text-primary-foreground overflow-hidden">
-        <div className="absolute inset-0 bg-black/60 z-10" />
+        <div className="absolute inset-0 bg-[#0A1B2E]/65 z-10" />
         <div
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/services_hero.png')" }}
         />
-        <div className="absolute bottom-0 left-0 right-0 h-40 z-10 bg-gradient-to-t from-black/70 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-40 z-10 bg-gradient-to-t from-[#0A1B2E]/75 to-transparent" />
 
         <div className="container mx-auto px-6 lg:px-16 relative z-20">
           <div className="flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.2em] text-primary-foreground/40 mb-6 font-medium">
@@ -122,7 +122,7 @@ export default function Services() {
                     {/* Learn More link */}
                     <Link
                       href={`/services/${service.slug}`}
-                      className="inline-flex items-center gap-2 px-6 py-3 font-bold text-[0.68rem] uppercase tracking-[0.18em] transition-all duration-350 border hover:bg-gold hover:text-black"
+                      className="inline-flex items-center gap-2 px-6 py-3 font-bold text-[0.68rem] uppercase tracking-[0.18em] transition-all duration-350 border hover:bg-gold hover:text-[#0A1B2E]"
                       style={{
                         borderColor: "var(--gold)",
                         color: isOdd ? "#FFF" : "var(--primary)",
@@ -172,7 +172,7 @@ export default function Services() {
           className="absolute inset-0 bg-cover bg-center opacity-10"
           style={{ backgroundImage: "url('/images/services_hero.png')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A1B2E]/95 to-[#0A1B2E]/70" />
         <div className="container mx-auto px-6 lg:px-16 relative z-10">
           <div className="max-w-2xl">
             <div className="section-label">Get Started</div>
@@ -191,7 +191,7 @@ export default function Services() {
               href="/contact"
               id="services-bottom-cta"
               className="inline-flex items-center gap-3 px-10 py-4 font-black text-[0.72rem] uppercase tracking-[0.18em] transition-all duration-300 hover:-translate-y-px"
-              style={{ background: "var(--gold)", color: "#111" }}
+              style={{ background: "var(--gold)", color: "var(--primary)" }}
             >
               Discuss Your Needs
               <ArrowRight size={16} />
