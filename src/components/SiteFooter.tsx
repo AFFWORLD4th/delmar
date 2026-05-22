@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone, Facebook, Instagram, Linkedin } from "lucide-react";
 
 const services = [
   "Maritime Support",
@@ -46,9 +46,40 @@ export function SiteFooter() {
               />
             </Link>
 
-            <p className="text-primary-foreground/60 text-sm leading-relaxed mb-8 max-w-xs">
+            <p className="text-primary-foreground/60 text-sm leading-relaxed mb-6 max-w-xs font-light">
               Global maritime & business support solutions engineered for reliability, efficiency, and international standards.
             </p>
+
+            {/* Social Links */}
+            <div className="flex items-center gap-3">
+              <a
+                href="https://www.facebook.com/DelmarServices"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-primary-foreground/60 hover:text-cyan hover:border-cyan hover:bg-white/10 transition-all duration-300"
+                aria-label="Facebook"
+              >
+                <Facebook size={14} />
+              </a>
+              <a
+                href="https://www.instagram.com/delmaer.services.company/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-primary-foreground/60 hover:text-cyan hover:border-cyan hover:bg-white/10 transition-all duration-300"
+                aria-label="Instagram"
+              >
+                <Instagram size={14} />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/122224071"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-primary-foreground/60 hover:text-cyan hover:border-cyan hover:bg-white/10 transition-all duration-300"
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={14} />
+              </a>
+            </div>
           </div>
 
           {/* Column 2 — Quick Links */}
